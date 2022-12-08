@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Добавить категорию{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center; text-transform: uppercase; font-family: Constantia;">Создать категорию</h1>
+
+    <form method="post" class="text-center">
+        {% csrf_token %}
+        <div>
+            <label>Название категории:</label>
+            <div style="height: 50px">
+                {{ form.category }}
+            </div>
+        </div>
+      <button type="submit" class="btn btn-outline-success">Создать</button>
+
+    </form>
+
+
+{% endblock %}

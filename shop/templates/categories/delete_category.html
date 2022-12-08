@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Удалить категорию{% endblock %}
+{% block content %}
+    <h1 style="text-align: center; text-transform: uppercase; font-family: Constantia;">Удаление категорий</h1>
+    <form action="" method="post" class="text-center">
+        {% csrf_token %}
+        <h5>Вы действительно хотите удалить категорию "<span
+                style="font-style: italic; color: red">{{ items.category }}</span>"?
+        </h5>
+        <a href="{% url 'categories' %}" title="Отменить удаление.">
+            <button type="button" class="btn btn-outline-success"
+            style="text-transform: uppercase; font-size: 25px; margin-right: 200px"><i class="bi bi-x-octagon-fill"></i></button>
+        </a>
+        <button type="submit" class="btn btn-outline-danger"
+                style="text-transform: uppercase; font-size: 25px" title="Удалить">
+            <i class="bi bi-trash3-fill"></i>
+        </button>
+    </form>
+{% endblock %}
