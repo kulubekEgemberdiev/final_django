@@ -2,11 +2,18 @@
 {% block title %}Категории{% endblock %}
 
 {% block content %}
-    <h1 style="text-align: center; text-transform: uppercase; font-family: Constantia;">Список категорий</h1>
+    <h1 style="text-align: center; text-transform: uppercase; font-family: Constantia;">Список категорий
+    </h1>
     <hr>
 
     <ul class="list-group list-group-flush">
+        <li class="list-group-item" style="font-size: 20px">
+            <a href="{% url 'add_category' %}" type="button" style="text-decoration: none; color: black; font-style: italic;">
+                <i class="bi bi-plus-circle-fill me-2" style="color: red; font-size: 22px" title="Добавить категорию"></i>
+            Добавить категорию
+            </a>
 
+        </li>
         {% for i in items %}
             <li class="list-group-item" style="font-size: 20px">
                 <a href="{% url 'edit_category' i.pk %}" type="button"><i class="bi bi-pen-fill me-2"
@@ -22,4 +29,5 @@
 
 
         {% endfor %}
+
 {% endblock %}
