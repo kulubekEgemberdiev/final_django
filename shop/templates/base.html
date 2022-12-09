@@ -25,20 +25,26 @@
                 {% if request.user.is_superuser %}
 
                     <li class="dropdown">
-          <a class="nav-link px-2 dropdown-toggle text-dark" href="#" id="add" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Создать
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle-fill me-2" style="color: green;"></i>
-            Добавить товар</a></li>
-            <li><a class="dropdown-item" href="{% url 'add_category' %}"><i class="bi bi-plus-circle-fill me-2" style="color: green;"></i>
-            Добавить категорию</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'categories' %}"><i class="bi bi-list-ol me-2" style="color: blue;"></i>
-            Список категорий</a></li>
-          </ul>
+                        <a class="nav-link px-2 dropdown-toggle text-dark" href="#" id="add" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Создать
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle-fill me-2"
+                                                                     style="color: green;"></i>
+                                Добавить товар</a></li>
+                            <li><a class="dropdown-item" href="{% url 'add_category' %}"><i
+                                    class="bi bi-plus-circle-fill me-2" style="color: green;"></i>
+                                Добавить категорию</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'categories' %}"><i class="bi bi-list-ol me-2"
+                                                                                          style="color: blue;"></i>
+                                Список категорий</a></li>
+                        </ul>
 
-        </li>
+                    </li>
                 {% endif %}
             </ul>
 
@@ -64,6 +70,10 @@
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="{% url 'index' %}" class="nav-link px-2 text-muted">Главная</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-muted" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#deliveryModal">
+                    Доставка
+                </a></li>
                 <li class="nav-item"><a href="{% url 'about' %}" class="nav-link px-2 text-muted">О нашем магазине</a>
                 </li>
                 <li class="nav-item"><a class="nav-link px-2 text-muted" type="button" data-bs-toggle="modal"
@@ -91,11 +101,11 @@
                                                            style="color: black;"></i> +996 (555) - 666 -555 </p>
                             <p style="font-size: 20px;"><i class="bi bi-whatsapp me-2" style="color: green;"></i> +996
                                 (777) - 444 -333 </p>
-                            <p style="font-size: 20px;"><i class="bi bi-telegram me-2" style="color: blue;"></i> +996
-                                (222) - 333 -111 </p>
+                            <p style="font-size: 20px;"><i class="bi bi-telegram me-2"
+                                                           style="color: rgb(50, 150, 210);"></i> @shopping.kg </p>
                             <p style="font-size: 20px;"><i class="bi bi-instagram me-2" style="color: darkred;"></i>
                                 @shopping.kg </p>
-                            <p style="font-size: 20px;"><i class="bi bi-facebook me-2" style="color: black;"></i>
+                            <p style="font-size: 20px;"><i class="bi bi-facebook me-2" style="color: blue;"></i>
                                 shopping.kg </p>
                             <p style="font-size: 20px;"><i class="bi bi-globe2 me-2" style="color: green;"></i>
                                 www.shopping.kg </p>
@@ -108,7 +118,39 @@
                 </div>
             </div>
             {#      modal contacts#}
+            {#   delivery modal   #}
 
+            <div class="modal fade" id="deliveryModal" tabindex="-1" aria-labelledby="deliveryModal"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Доставка</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 20px;"><i class="bi bi-bicycle me-2" style="color: blue;"></i>
+                            Доставка по г. Бишкек - бесплатно.</p>
+                            <p style="font-size: 20px;"><i class="bi bi-taxi-front me-2" style="color: blue;"></i>
+                            Доставка по регионам  - 1000 сом.</p>
+                            <hr>
+                            <br>
+                            <p style="font-size: 20px;"><i class="bi bi-patch-exclamation-fill me-2" style="color: red;"></i>
+                            Доставка грузов от 100 кг:</p>
+                            <p style="font-size: 20px;"><i class="bi bi-arrow-right me-2" style="color: blue;"></i>
+                            Доставка по г. Бишкек - 250 сом.</p>
+                            <p style="font-size: 20px;"><i class="bi bi-arrow-right me-2" style="color: blue;"></i>
+                            Доставка по регионам  - 1250 сом.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Закрыть
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#   delivery modal   #}
 
         </footer>
     </div>
