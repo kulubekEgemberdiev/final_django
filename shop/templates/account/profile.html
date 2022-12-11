@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} Профиль пользователя {% endblock %}
+
+{% block nav_item %}{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            Идентификационный номер: {{ user.id }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Имя пользователя: <i style="font-weight: normal">{{ user.username }}</i></h5>
+            <p class="card-text"><b>Дата регистрации: </b><i>{{ user.date_joined }}</i></p>
+        </div>
+    </div>
+{% endblock %}

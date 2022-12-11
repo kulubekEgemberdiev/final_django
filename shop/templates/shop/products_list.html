@@ -9,7 +9,8 @@
                data-bs-toggle="dropdown" aria-expanded="false">
                 Добавить
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu shadow-lg p-3 rounded" aria-labelledby="navbarDropdown"
+                style="background: rgb(210,210,210)">
                 <li><a class="dropdown-item" href="{% url 'create_product' %}"><i
                         class="bi bi-plus-circle-fill me-2"
                         style="color: green;"></i>
@@ -39,8 +40,9 @@
             </li>
             {% for i in category %}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page">
-                        <button type="submit" class="btn btn-light" name="sort" value="{{ i.pk }}">{{ i.category }}</button>
+                    <a class="nav-link" aria-current="page">
+                        <button type="submit" class="btn btn-light" name="sort"
+                                value="{{ i.pk }}">{{ i.category }}</button>
                     </a>
                 </li>
             {% endfor %}

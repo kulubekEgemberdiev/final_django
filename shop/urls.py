@@ -15,4 +15,9 @@ urlpatterns = [
     path('categories/', Categories.as_view(), name='categories'),
     path('category-<int:pk>/edit/', EditCategory.as_view(), name='edit_category'),
     path('category-<int:pk>/delete/', DeleteCategory.as_view(), name='delete_category'),
+    # -------------------------------------------------------------------------------------
+    path('register/', RegistrationUser.as_view(), name='register'),
+    path('login/', LoginUser.as_view(), name='login'),
+    path('logout/', logout_user, name='logout'),
+    path('user-<int:pk>/profile/', UserProfile.as_view(), name='user_profile'),
 ]

@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.forms import widgets
 
 from .models import *
@@ -23,3 +25,22 @@ class ProductForm(forms.ModelForm):
             'category': widgets.RadioSelect,
             'description': widgets.Textarea(attrs={"cols": 50, "rows": 2}),
         }
+
+
+class RegisterForm(UserCreationForm):
+    username = forms.CharField(label='Имя пользователя',
+                               widget=forms.TextInput(
+                                   attrs={'class': 'form-input'}
+                               ))
+    password1 = forms.CharField(label='Пароль',
+                                widget=forms.PasswordInput(
+                                    attrs={'class': 'form-input'}
+                                ))
+    password2 = forms.CharField(label='Подтверждение пароля',
+                                widget=forms.PasswordInput(
+                                    attrs={'class': 'form-input'}
+                                ))
+
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']

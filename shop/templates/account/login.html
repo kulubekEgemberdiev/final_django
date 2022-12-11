@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Авторизация{% endblock %}
+{% block content %}
+    <h1 style="text-align: center; text-transform: uppercase; font-family: Constantia; margin-bottom: 40px;">Авторизация</h1>
+<form method="post" class="text-center">
+  {% csrf_token %}
+
+    <div class="form-floating">
+      <label>Имя пользователя:</label>
+        {{ form.username }}
+    </div>
+    <div class="form-floating mt-3">
+      <label>Пароль:</label>
+        {{ form.password }}
+    </div>
+    <button class="w-10 btn btn-lg btn-success mt-5" type="submit">Авторизоваться</button>
+  </form>
+
+{% endblock %}
