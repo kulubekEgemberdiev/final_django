@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Список товаров{% endblock %}
+
+{% block nav_item %}
+    {% if request.user.is_superuser %}
+
+        <li class="dropdown">
+            <a class="nav-link px-2 dropdown-toggle text-dark" href="#" id="add" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+                Добавить
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'create_product' %}"><i
+                        class="bi bi-plus-circle-fill me-2"
+                        style="color: green;"></i>
+                    Добавить товар</a></li>
+                <li><a class="dropdown-item" href="{% url 'add_category' %}"><i
+                        class="bi bi-plus-circle-fill me-2" style="color: green;"></i>
+                    Добавить категорию</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'categories' %}"><i class="bi bi-list-ol me-2"
+                                                                              style="color: blue;"></i>
+                    Список категорий</a></li>
+            </ul>
+
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block menu %}
+    <form action="{% url 'products_list' %}" method="get" id="sortProducts">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'products_list' %}">
+                    <button class="btn btn-light">Все</button>
+                </a>
+            </li>
+            {% for i in category %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page">
+                        <button type="submit" class="btn btn-light" name="sort" value="{{ i.pk }}">{{ i.category }}</button>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </form>
+{% endblock %}
+
+
+{% block content %}
+    <h1 style="text-align: center; text-transform: uppercase; font-family: Constantia; margin-bottom: 40px;">Список
+        товаров</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for i in products %}
+            <div class="col mb-3" style="display: flex;">
+                <div class="card shadow-lg p-3 rounded">
+                    <img src="{{ i.image }}" alt="{{ i.name }}" style="height: 400px; width: 400px;">
+
+                    <div class="card-body" style="position: relative; display: block;">
+                        <a href="{% url 'product_detail' i.pk %}" style="text-decoration: none; color: black;">
+                            <h4 class="card-title">{{ i.name }}</h4></a>
+                        <hr>
+                        <p class="card-text"><b>{{ i.product_type }}</b></p>
+                        <h5>{{ i.price }} сом.</h5>
+                        <div class="d-flex justify-content-between align-items-center mt-4" style="height: 30px">
+                            <div class="btn-group"
+                                 style="position: absolute; bottom: 0; margin-bottom: 10px; margin-left: 30px">
+                                <a href="{% url 'product_detail' i.pk %}">
+                                    <button type="button" class="btn btn-outline-info">Подробнее
+                                        <i class="bi bi-eye-fill ms-2"></i></button>
+                                </a>
+                                <button type="button" class="btn btn-outline-success"><i
+                                        class="bi bi-cart-plus-fill me-2"></i>Добавить в корзину
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% if is_paginated %}
+            {% include "pagination.html" %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Редактировать товар{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center; text-transform: uppercase; font-family: Constantia;">Редактировать товар</h1>
+
+    <form method="post" class="text-right">
+        {% csrf_token %}
+
+        <div class="fieldWrapper">
+            {{ form.name.errors }}
+            <label for="{{ form.name.id_for_label }}" style="margin-right: 120px">Название товара:</label>
+            {{ form.name }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.description.errors }}
+            <label for="{{ form.description.id_for_label }}" style="margin-right: 118px; margin-top: 50px;">Описание товара:</label>
+            {{ form.description }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.trademark.errors }}
+            <label for="{{ form.trademark.id_for_label }}" style="margin-right: 128px;">Торговая марка:</label>
+            {{ form.trademark }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.maker.errors }}
+            <label for="{{ form.maker.id_for_label }}" style="margin-right: 130px; margin-top: 10px;">Производитель:</label>
+            {{ form.maker }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.image.errors }}
+            <label for="{{ form.image.id_for_label }}" style="margin-right: 10px; margin-top: 10px;">Ссылка на изображение товара:</label>
+            {{ form.image }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.product_type.errors }}
+            <label for="{{ form.product_type.id_for_label }}" style="margin-right: 163px; margin-top: 10px;">Тип товара:</label>
+            {{ form.product_type }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.qty_in_stock.errors }}
+            <label for="{{ form.qty_in_stock.id_for_label }}" style="margin-right: 57px; margin-top: 10px;">Остаток товара на складе:</label>
+            {{ form.qty_in_stock }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.price.errors }}
+            <label for="{{ form.price.id_for_label }}" style="margin-right: 152px; margin-top: 10px;">Цена товара:</label>
+            {{ form.price }}
+        </div>
+        <div class="form-check">
+            {{ form.category.errors }}
+            <label for="{{ form.category.id_for_label }}" style="margin-top: 10px;">Категория:</label>
+            {{ form.category }}
+        </div>
+
+
+        <button type="submit" class="btn btn-outline-success mt-4" style="margin-left: 150px;">Сохранить</button>
+
+    </form>
+
+
+{% endblock %}

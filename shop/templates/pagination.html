@@ -1,0 +1,26 @@
+<div class="pagination">
+<span class="step-links">
+<a href="?page=1" title="В начало">
+    <i class="bi bi-chevron-double-left ms-1 me-1" style="font-size: 20px;"></i></a>
+
+
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" title="Назад"><i class="bi bi-chevron-left ms-1 me-1"
+                                                                                     style="font-size: 20px;"></i></a>
+    {% else %}
+        <span class="page-disabled"><i class="bi bi-chevron-left" style="font-size: 20px;"></i></span>
+    {% endif %}
+    <form class="current-page" method="get">
+<label for="page">Страница <input type="text" name="page" id="page" value="{{ page_obj.number }}">
+из {{ page_obj.paginator.num_pages }}.
+</label>
+</form>
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" title="Следующий"><i class="bi bi-chevron-right ms-1 me-1" style="font-size: 20px;"></i></a>
+    {% else %}
+        <span class="page-disabled"><span class="material-symbols-outlined">
+navigate_next</span></span>
+    {% endif %}
+    <a href="?page={{ page_obj.paginator.num_pages }}" title="В конец"><i class="bi bi-chevron-double-right ms-1 me-1" style="font-size: 20px;"></i></a>
+</span>
+</div>
