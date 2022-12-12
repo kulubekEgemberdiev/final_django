@@ -44,3 +44,15 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'password1', 'password2']
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ["name", "last_name", "phone", "address"]
+
+
+class CartForm(forms.ModelForm):
+    class Meta:
+        model = Cart
+        fields = ["qty"]

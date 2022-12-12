@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Корзина{% endblock %}
+{% block content %}
+    <h1 style="text-align: center; text-transform: uppercase; font-family: Constantia; margin-bottom: 40px;">Список
+        товаров в корзине</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Название товара</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Цена за 1шт.</th>
+            <th scope="col">Итого</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.qty }}</td>
+                <td>{{ item.product.price }}</td>
+                <td>{{ item.get_product_total }}</td>
+                <td><a href="{% url "remove_one_for_cart" item.pk %}" class="btn btn-warning">Удалить один</a></td>
+                <td><a href="{% url "remove_for_cart" item.pk %}" class="btn btn-danger">Удалить все</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h5>Итого: {{ total }}</h5>
+    <hr>
+    <h3 style="text-align: center; text-transform: uppercase; font-family: Constantia; margin-bottom: 40px;">Оформить заказ</h3>
+    <form action="{% url 'order_create' %}" method="post" class="text-right">
+        {% csrf_token %}
+
+        <div class="fieldWrapper">
+            {{ form.name.errors }}
+            <label for="{{ form.name.id_for_label }}" style="margin-right: 55px">Имя:</label>
+            {{ form.name }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.last_name.errors }}
+            <label for="{{ form.last_name.id_for_label }}" style="margin-right: 20px; margin-top: 20px;">Фамилия:</label>
+            {{ form.last_name }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.phone.errors }}
+            <label for="{{ form.phone.id_for_label }}" style="margin-right: 23px; margin-top: 20px;">Тeлефон:</label>
+            {{ form.phone }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.address.errors }}
+            <label for="{{ form.address.id_for_label }}" style="margin-right: 42px; margin-top: 20px;">Адрес:</label>
+            {{ form.address }}
+        </div>
+
+
+
+        <button type="submit" class="btn btn-outline-success mt-4" style="margin-left: 150px;">Заказать</button>
+
+    </form>
+{% endblock %}

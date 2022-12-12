@@ -28,5 +28,16 @@
 
         </div>
     </div>
+    <form action="{% url "add_to_cart" product.pk %}?next={{ request.path }}" method="post"
+              style="bottom: 0; margin-top: 20px; width: 20%" class="bg-light">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" name="qty" aria-describedby="button-addon2"
+                       name="count" value="1">
+                <button type="submit" class="btn btn-outline-success"><i
+                        class="bi bi-cart-plus-fill me-2"></i>Добавить в корзину
+                </button>
+            </div>
+        </form>
 
 {% endblock %}
