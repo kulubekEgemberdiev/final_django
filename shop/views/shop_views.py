@@ -10,6 +10,8 @@ from shop.models import Products, Category
 class Index(ListView):
     model = Products
     template_name = 'shop/index.html'
+    context_object_name = 'products'
+    queryset = Products.objects.all()
 
 
 def about_page(request):

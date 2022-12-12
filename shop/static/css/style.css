@@ -50,3 +50,6 @@
     font-size: 18px;
     font-style: italic;
 }
+
+.card IMG { position: relative; }
+.three { top: 50px; left: 55px; z-index: 5; }
